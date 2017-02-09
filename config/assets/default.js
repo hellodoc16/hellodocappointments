@@ -40,9 +40,7 @@ module.exports = {
         'public/lib/angular-material/angular-material.min.js',
         'public/lib/angular-input-stars-directive/angular-input-stars.js',
         'public/lib/angularMultipleSelect/build/multiple-select.min.js',
-        'public/lib/fullcalendar-scheduler/dist/scheduler.min.js',
-       // 'public/lib/filepicker-js/filepicker.min.js',
-       // 'public/lib/angular-filepicker/dist/angular_filepicker.min.js'
+        'public/lib/fullcalendar-scheduler/dist/scheduler.min.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
