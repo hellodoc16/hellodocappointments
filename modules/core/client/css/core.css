@@ -1,0 +1,173 @@
+
+.container{
+    -webkit-box-shadow: 0 1px 1px #BDBDBD;
+    -moz-box-shadow: 0 1px 1px #BDBDBD;
+     box-shadow: 0 1px 1px #BDBDBD;
+     height:auto;
+     padding-bottom: 500px !important;
+}  
+
+/* Navigation Header*/
+
+ .navbar-fixed-top  {
+    background-color: #4DB1E2;
+}
+
+.navbar-brand {
+    margin-left: 10px;
+    font-family: 'Raleway', sans-serif !important;
+    margin-top: 5px;
+    font-size:20px !important;
+    color:white;
+}
+
+.navbar-brand:hover {
+    text-decoration: none;
+    background-color: #eee;
+    }
+    
+.navbar-nav > li > a {
+    font-family: 'Raleway', sans-serif !important;
+
+}
+
+.navbar-items {
+    margin: 5px 15px;
+    margin-right: 40px;
+    color:white;
+}
+
+.navbar-toggle {
+    color:#00A89C;
+}
+
+/* Logo  */
+.hellodoc-logo {
+    margin-top: 15%;
+}
+
+/*Main Landing Page*/
+
+.body-main {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.book{
+    background-color:#00B85D !important;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+ .panel-search {
+     margin: 0 auto;
+     text-align: center;
+ }
+
+.book-text {
+    margin: 0 auto;
+    text-align: center;
+    color: #2b3d4f;
+ }
+
+ .input-search {
+     padding: 5px;
+ }
+
+ /*Booking Page*/
+
+.md-datepicker-input-container {
+    margin-top: 15px;
+    width: 150px;
+}
+
+.md-datepicker-calendar-icon {
+    margin-top: 5px;
+}
+
+.startTime {
+    width: 150px !important;
+    margin-left: 27px;
+}
+
+.startTime-label {
+    margin-left: 27px;
+    font-weight: normal;
+}
+
+.glyphicon-time {
+    font-size: 20px;
+    margin-left: 15px;
+}
+    
+.patientForm {
+    margin-top: 10px;
+}
+
+.img-circle {
+    text-align: center;
+}
+
+.fill-more {
+    margin-left: 5px;
+    margin-bottom: 30px !important;
+    color: #2b3d4f;
+ }
+
+.title-text {
+    text-align: center;
+    color: #2b3d4f;
+    background:#00B85D;
+    margin-top:10px
+ }
+
+.patientMessage {
+    margin-left: 55px;
+}
+
+.complaint {
+    margin-top: 30px;
+    margin-left: 10px;
+    width: 90% !important;
+}
+
+.submit {
+    background-color:#00B85D !important; 
+    color:white !important;
+    margin: 20px; 
+    width: 200px;
+    text-align: center;
+}
+
+.submit:disabled
+{
+  color: GrayText;
+  cursor: inherit;
+  background-color: #ddd !important;
+  background: #ddd !important;
+}
+
+.header-profile-image {
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.open .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: #4DB1E2;
+    border-color:#4DB1E2;
+}
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #4DB1E2;
+}
+/*md-autocomplete > md-autocomplete-wrap > md-progress-linear { 
+    border-color:red!important;
+    background: yellow;
+    
+    }*/

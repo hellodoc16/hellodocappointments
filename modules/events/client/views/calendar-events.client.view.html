@@ -1,0 +1,33 @@
+<section ng-controller="EventsController as eventCtrl">
+
+    <div class="row" ng-init="getEvents()">
+        <div id="calendar" class="row pad-bottom" ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+
+        <md-sidenav flex="70" md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right">
+            <div class="well side-well" ng-show="currentEvent">
+                <strong>Dentist Name:</strong>
+                <pre> {{currentEvent.title}}<br/></pre>
+                <strong>When:</strong>
+                <br/>
+                <pre>{{currentEvent.start | amDateFormat: 'dddd, MMMM Do YYYY'}} <br/>{{currentEvent.start | amDateFormat: 'h:mm:ss a'}} to {{currentEvent.end  | amDateFormat: 'h:mm:ss a'}}</pre> 
+                <strong>Patient Details:</strong>
+                <p>
+                    <pre>
+ {{currentEvent.description.split('\n')[0]}}
+ {{currentEvent.description.split('\n')[1]}}
+ {{currentEvent.description.split('\n')[2]}}
+ {{currentEvent.description.split('\n')[3]}}
+ {{currentEvent.description.split('\n')[4]}}
+ {{currentEvent.description.split('\n')[5]}}
+ {{currentEvent.description.split('\n')[6]}}
+ {{currentEvent.description.split('\n')[7]}}
+ {{currentEvent.description.split('\n')[8]}}
+ {{currentEvent.description.split('\n')[9]}}
+                    </pre>
+                </p>
+            </div>
+        </md-sidenav>
+    </div>
+
+
+</section>

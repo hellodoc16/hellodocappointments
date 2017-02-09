@@ -1,0 +1,55 @@
+<section class="container">
+<h1><a class="fa fa-1x fa-medkit" ></a><b> Treatment Types </b></h1><br/>
+<div ng-controller="ApptTypeController">
+    <table class="table table-responsive">
+        <thead>
+            <tr style="color:#248dc9; font-size:20px;">
+            <th>Procedure</th>
+            <th>Duration (min)</th>
+            <th>Cost</th>
+            <th>Description</th>
+            <th>Action</th>
+            <th>&nbsp;</th>
+            </tr>
+        </thead>
+        
+         <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" ng-model="procedure.description">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" ng-model="procedure.duration">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" ng-model="procedure.price">
+                    </td>
+                     <td>
+                        <input type="text" class="form-control" ng-model="procedure.longDescription">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="addProcedure()" ng-disabled="disabled"><i class="glyphicon glyphicon-plus"></i></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="update(procedure)" ng-disabled="!disabled"><i class="glyphicon glyphicon-ok"></i></button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-info" ng-click="deselect()"><i class="glyphicon glyphicon-refresh"></i></button>
+                    </td>
+                </tr>
+                <tr data-ng-repeat="procedure in procedureList">
+                    <td>{{procedure.description}}</td>
+                    <td>{{procedure.duration}}</td>
+                    <td>{{procedure.price}}</td>
+                    <td>{{procedure.longDescription}}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="edit(procedure)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="remove(procedure)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</section>

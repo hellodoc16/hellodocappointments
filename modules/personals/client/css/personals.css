@@ -1,0 +1,153 @@
+
+.prsnl-profile {
+	font-size: 250px;
+}
+
+.prsnl-cust-list {
+	font-size: 100px;
+    height: 100px;
+}
+
+.prsnl-image {
+	font-size: 100px;
+    height: 100px;
+}
+
+
+.chkbox-cons-left {
+	width: 10%;
+}
+
+.extra-padding {
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.list-group-item-text {
+	word-wrap: break-word;
+}
+
+.dayList  {
+    border-radius: 32px;
+    margin-left: 1%;
+    height: 30px;
+    width: 180px;
+}
+ h1,h4,h2{
+         color: #248dc9;
+     }
+    
+
+ td{
+         text-align:center;
+     }
+.dropdown-menu{
+         margin-left: 15px;
+     }
+     
+    /* @import "compass/css3";*/
+
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+  
+  .star {
+    padding: 1px;
+    color: #ddd;
+    font-size: 20px;
+    text-shadow: .05em .05em #aaa;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+    .filled {
+      color: #fd0;
+    }
+  
+
+  .readonly .star.filled {
+    color: #666;
+  }
+
+
+
+@media only screen and (max-width: 768px)  {
+     
+     .navbar-nav>li>.dropdown-menu {
+ 
+    background-color: #00A89C;
+}
+     
+    .input-group .form-control{
+        position: relative;
+        z-index: 0;
+    }
+    .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group{
+            z-index: 0;
+             position: relative;
+    }
+    
+ }
+ 
+ 
+ @media only screen and (max-width: 1950px)  {
+      .input-group .form-control{
+        position: relative;
+        z-index: 0;
+    }
+    .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group{
+            z-index: 0;
+             position: relative;
+    }
+ }
+ 
+  @media only screen and (max-width: 935px)  {
+ 
+    .text-center{
+             margin-top: 75px;
+              }
+     .fa-user-md{
+          margin-top: 75px;
+     }          
+ }
+ 
+ /* Toast color and position   */
+ md-toast {
+    position: fixed !important;
+}
+/*.md-toast.error {
+    background-color: red !important;
+}
+
+.md-toast {
+    background-color: green !important;
+}*/
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn  {
+      margin-right: -10% !important;
+}
+
+/* save and cancel button in adding new doctors */
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    margin-right: 0 !important;
+}
+
+/* photo upload */
+ #filepicker_shade {
+    position: relative;
+    z-index: 99999;
+    height: 100%;
+    background: rgb(238, 238, 238);
+}
+.user-profile-picture {
+  min-height: 150px;
+  max-height: 150px;
+  width: 40%;
+}
+
+.personalphoto{
+    height: 100%;
+}

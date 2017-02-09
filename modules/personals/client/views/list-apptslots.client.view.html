@@ -1,0 +1,67 @@
+<section data-ng-controller="ApptSlotController">
+    
+<div class="modal-header" >
+    <h2> <a class="fa fa-2x fa-clock-o" ></a><b> Appointment Slots </b></h2>
+</div>
+
+  <div class="modal-body">
+
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Day of the week</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Location</th>
+                    <th>&nbsp;</th>
+                    <th>
+                        <button class="btn btn-info" ng-click="deselect()"><i class="glyphicon glyphicon-refresh"></i></button>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <select class="dayList" ng-model="slot.selectedDay" ng-options="day.label for day in dayOptions"></select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="8" ng-model="slot.starttime" name="time" bs-timepicker>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" size="8" ng-model="slot.endtime" name="time" bs-timepicker>
+                    </td>
+
+                    <td>
+                        <input type="text" class="form-control" ng-model="slot.location">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="addSlots()"><i class="glyphicon glyphicon-plus"></i></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="updateSlots(slot)"><i class="glyphicon glyphicon-ok"></i></button>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr data-ng-repeat="slot in slotList">
+                    <td>{{slot.day}}</td>
+                    <td>{{slot.starttime | date:'shortTime'}}</td>
+                    <td>{{slot.endtime | date:'shortTime'}}</td>
+                    <td>{{slot.location}}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="edit(slot)"><i class="glyphicon glyphicon-pencil"></i></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="remove(personal, slot)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" ng-click="update(personal); ok()">Save & Close</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
+</section>

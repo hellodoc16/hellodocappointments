@@ -1,0 +1,24 @@
+<md-dialog aria-label="Failed"  ng-cloak>
+  <form class="failed">
+    
+     <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2 class="text text-center bookapt failed1">Failed!</h2>
+        <p class="text text-center not-confirm">Your Appointment is not Confirmed</p>
+        <md-divider></md-divider>
+        <div class="panel panel-body popup fail-popup">
+          <h2>Server is down. Please try again later</h2>  
+        </div>
+      </div>
+    </md-dialog-content>
+    
+    
+    <md-dialog-actions>
+        
+      <md-button class="fail-close" style="background-color:#4DB1E2; color:white;"  ng-click="answer('okay')">
+         Close
+      </md-button>
+       
+    </md-dialog-actions>
+  </form>
+</md-dialog>

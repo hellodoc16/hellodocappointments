@@ -1,0 +1,24 @@
+
+<section class="container" data-ng-controller="EventsController as eventCtrl">
+    <br>
+    <div class="panel panel-default"> 
+                   
+        <div class="panel-heading">
+            <b><h2 class="appointments"><i class="glyphicon glyphicon-list-alt"></i> Appointments
+                <md-button class="md-fab md-primary cal-icon" aria-label="view" ng-click="eventCtrl.toggleview()">
+                    <i class="glyphicon glyphicon-calendar"></i></md-button>
+            </h2></b>
+            
+        </div>
+        
+        <div class="panel-body">
+            <div ng-include="'modules/events/views/calendar-events.client.view.html'" ng-show="isCalendarView"></div>
+            <div ng-include="'modules/events/views/list-events.client.view.html'" ng-show="isTableView"></div>
+        </div>
+        
+    </div>
+ 
+    
+</section>
+
+

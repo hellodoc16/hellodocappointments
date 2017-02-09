@@ -1,0 +1,39 @@
+<md-dialog aria-label="Success" ng-cloak>
+  <form class="success">
+   <!-- <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Confirmed</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="glyphicon glyphicon-remove"></i>
+        </md-button>
+      </div>
+    </md-toolbar>-->
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div id="success-confirm1">
+        <h2 class="text text-center bookapt thank-you">Thank you !!</h2>
+        <p id="success-confirm2" class="text text-center ">Your Appointment is Confirmed</p>
+        </div>
+        <!--<md-divider></md-divider>-->
+        <div class="panel panel-body popup success-popup">
+            <p>Your appointment request has been <strong>received.</strong> Please check your Google calendar for confirmation.</p>
+       <div class="center">
+             <img class="img poto" ng-src="{{selectedDentist.profileImageURL}}" ng-if="selectedDentist.profileImageURL">
+             <img class="img poto" ng-src="modules/personals/img/buttons/default.png" ng-if="!selectedDentist.profileImageURL"> 
+          <!-- <p><strong>Your booking details</strong></p>-->
+           <p class="confirm-detail"><strong>Dentist Name:</strong> {{ selectedDentist.fName + ' ' + selectedDentist.lName + ' ' + selectedDentist.qualification}} </p>
+           <p class="confirm-detail"><strong>Treatment: </strong>{{ selectedTreatment.description }}</p>
+           <p class="confirm-detail"><strong>Patient Name:</strong> {{ displayName}} </p>
+           <p class="confirm-detail"><strong> Appointment Date and Time: </strong>{{displayDateTime  | date: 'medium'}} to {{displayTime | amDateFormat: 'h:mm:ss A'}}</p>
+      </div>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="success-close">
+      <md-button  style="background-color:#4DB1E2; color:white;  margin-top: 40px;" ng-click="answer('okay')">
+         Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

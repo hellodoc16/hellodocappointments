@@ -1,0 +1,151 @@
+<section id="booking-page" class="container" ng-controller="BookController">
+
+
+
+    <div layout="row" layout-xs="column" ng-controller="EventsCreateController as createEventCtrl">
+
+        <div flex-sm="30" flex-gt-sm="30" class="panel panel-body panel-left title-text">
+
+            <br>
+            <br>
+            <p class="fName img-circle">
+               <img class="img" ng-src="{{dentist.profileImageURL}}" ng-if="dentist.profileImageURL">
+                <img class="img" ng-src="modules/personals/img/buttons/default.png" ng-if="!dentist.profileImageURL">
+
+                <h3>
+                    {{ dentist.fName + ' ' + dentist.lName + ', ' + dentist.qualification }}
+                </h3>
+            </p>
+            <br>
+
+            <p class="experience"> <strong>Experience: </strong> {{ dentist.experience }}</p>
+            <p class="speciality"> <strong>Specialization: </strong> {{ dentist.speciality }}</p>
+            <p class="treatment"> <strong>Treatment: </strong> {{ treatment.description }}</p>
+            <p class="rating"> <strong>Rating: </strong>
+                <input-stars max="5" ng-model="dentist.rating" readonly></input-stars>
+            </p>
+
+        </div>
+
+
+        <div flex-sm="70" flex-gt-sm="70" class="panel panel-body">
+            <h3 class="fill-more"> Please fill more information to book an appointment </h3>
+
+            <form  name="patientForm" class="patientForm">
+
+                <legend class="fill-more">Appointment Date and Time</legend>
+
+                <md-datepicker class="select-date" name="startDate" ng-model="$parent.event.startDate" md-placeholder="Select Date" ng-change="createEventCtrl.updateTime()"
+                md-min-date="minDate" md-max-date="maxDate">
+                </md-datepicker>
+                <br>
+                <div class="patientMessage" ng-show="notavailable">
+                    <b>{{notavailable}}</b>
+                </div>
+
+                <md-input-container class="time">
+                    <md-icon><i class="text-muted glyphicon glyphicon-time"></i></md-icon>
+                    <label class="startTime-label" for="startTime">Select Time</label>
+                    <input id="timePick" name="startTime" type="text" class="time start startTime" ng-model="$parent.event.startTime" ng-required="true">
+
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.startTime.$touched">
+                        <div ng-show="patientForm.startTime.$error.required">
+                            <b>Please fill the appointment Time</b>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <legend class="fill-more">Patient Information</legend>
+
+                <md-input-container class="pname" style="margin-left:25px;margin-top:0">
+                    <label class="all-colors">Patient Name</label>
+                    <md-icon><i class="text-muted glyphicon glyphicon-user"></i></md-icon>
+                    <input id="patientid" required name="patientName" type="text" ng-model="$parent.event.patientName" 
+                    ng-required="true">
+
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientName.$touched">
+                        <div ng-show="patientForm.patientName.$error.required"><b>Please fill the patient name</b></div>
+                        <!--<div ng-show="patientForm.patientName.$error.pattern"><b>Please fill the letters only</b></div> ng-pattern="/^[a-zA-Z ]{1,25}$/"--> 
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="age" style="margin-left:55px;margin-top:0">
+                    <label style="margin-left:7px">Age</label>
+                    <input id="ageid" required class="ageinput"  name="patientAge" type="number" ng-model="$parent.event.patientAge" min="0" ng-pattern="/^[0-9]{1,2}$/">
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientAge.$touched">
+                        <div ng-show="patientForm.patientAge.$error.required"><b>Please fill  age</b></div>
+                        <div ng-show="patientForm.patientAge.$error.pattern"><b>Enter age between 1 to 2 digits only</b></div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="gender" style="margin-left:52px;margin-top:0;margin-bottom:0">
+                    <md-radio-group layout="row" id="genderid" name="patientGender" ng-model="$parent.event.patientGender">
+                        <md-radio-button value="Male" class="md-primary text-muted" style="margin-bottom:35px"><b>Male</b></md-radio-button>
+                        <md-radio-button value="Female" class="text-muted" style="margin-bottom:35px"><b>Female</b></md-radio-button>
+                    </md-radio-group>
+                </md-input-container>
+
+                <md-input-container class="place" style="margin-left:25px;margin-top:0">
+                    <label class="all-colors">Place</label>
+                    <md-icon><i class="text-muted glyphicon glyphicon-home"></i></md-icon>
+                    <input id="placeid" required name="patientPlace" type="text" ng-model="$parent.event.patientPlace" ng-pattern="/^[a-zA-Z ]{1,25}$/">
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientPlace.$touched">
+                        <div ng-show="patientForm.patientPlace.$error.required"><b>Please fill  patient place</b></div>
+                        <div ng-show="patientForm.patientPlace.$error.pattern"><b>Please fill the letters only</b></div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="phonenumber" style="margin-left:25px;margin-top:0">
+                    <label class="all-colors">Contact Number</label>
+                    <md-icon><i class="text-muted glyphicon glyphicon-phone"></i></md-icon>
+                    <input id="phoneid" required name="patientPhoneNumber" ng-model="$parent.event.patientPhoneNumber" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/"
+                    ng-required="true">
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientPhoneNumber.$touched">
+                        <div ng-show="patientForm.patientPhoneNumber.$error.required"><b>Please fill phone number</b></div>
+                        <div ng-show="patientForm.patientPhoneNumber.$error.pattern"><b> fill valid phone number </b></div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="email" style="margin-left:25px;margin-top:0">
+                    <label class="all-colors">Email</label>
+                    <md-icon><i class="text-muted glyphicon glyphicon-envelope"></i></md-icon>
+                    <input id="emalid" required  name="patientEmail" ng-model="$parent.event.patientEmail" type="email" ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i"
+                    >
+                    <div class="patientcolor" ng-show="patientForm.$submitted || patientForm.patientEmail.$touched">
+                        <span ng-show="patientForm.patientEmail.$error.required"><b>Please fill the patient email Id</b></span>
+                        <span ng-show="patientForm.patientEmail.$error.pattern"><b>fill correct email Id.</b></span>
+                    </div>
+                </md-input-container>
+
+                <mde-list-item class="text-muted" id="checkboxid" name="medicalCondition">
+                    <label layout="row" style="margin-left:25px;margin-top:0">
+                        Medical Conditions :
+                    </label>
+
+                    <div layout="row" layout-xs="column" layout-wrap="" flex="" style="margin-left:30px;margin-top:20px">
+                        <div flex="50" ng-repeat="item in items">
+                            <md-checkbox ng-checked="exists(item, patientSelectedMedicalCondition)" ng-click="toggle(item, patientSelectedMedicalCondition)">
+                                {{ item }}
+                            </md-checkbox>
+                        </div>
+                    </div>
+
+                </mde-list-item>
+
+
+                <md-input-container class="complaint">
+                    <label class="complaint" layout="row">Chief Complaint:</label>
+                    <textarea id="complaintid" name="patientComplaint" class="complaint" ng-model="$parent.event.patientChiefComplaint" md-maxlength="150"
+                    rows="3" md-select-on-focus>
+                    </textarea>
+                </md-input-container>
+
+            </form>
+
+            <md-button class="md-primary submit" ng-click="createEventCtrl.addEvent()" ng-disabled="patientForm.$invalid || patientForm.$pending"><b>Submit</b></md-button>
+        </div>
+
+
+    </div>
+
+</section>

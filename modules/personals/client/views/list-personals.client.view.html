@@ -1,0 +1,31 @@
+<section class="container" data-ng-controller="PersonalsController as personalsCtrl">
+  
+  <div class="row">
+      
+    <div class="col-xs-6 col-sm-4">
+      <h1> <a class="fa fa-2x fa-user-md" ></a> <b>DENTISTS </b> </h1>
+    </div>
+      
+      <div class="form-group col-xs-6 col-sm-8 col-md-8 text-right pull-down">
+          <h2>
+          <button type="button" class="btn btn-success text-center" ng-click="personalsCtrl.modelCreate('lg')">
+              <i class="glyphicon glyphicon-user"></i> <br>
+                  New Dentist
+          </button>                  
+          </h2>
+      </div>
+      
+  </div>
+    
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-8">
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" ng-model="searchText" placeholder="Search...">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="button"><span class="glyphicon glyphicon-search"></span></button>       
+        </span>
+      </div>
+    </div>
+  </div>
+  <list-personal></list-personal>
+</section>

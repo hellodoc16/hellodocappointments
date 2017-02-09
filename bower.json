@@ -1,0 +1,37 @@
+{
+  "name": "schedulingapplication",
+  "version": "0.0.0",
+  "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-animate": "latest",
+    "angular-mocks": "latest",
+    "angular-bootstrap": "latest",
+    "angular-ui-utils": "bower",
+    "angular-ui-router": "latest",
+    "angular-file-upload": "~2.3.4",
+    "angular-cookies": "latest",
+    "angular-motion": "latest",
+    "jquery-ui": "latest",
+    "jt.timepicker": "latest",
+    "angular-jquery-timepicker": "latest",
+    "angular-material": "latest",
+    "angular-moment": "latest",
+    "moment": "latest",
+    "font-awesome": "latest",
+    "angular-input-stars-directive": "angular-input-stars#~1.5.5",
+    "angularMultipleSelect": "angular-multiple-select#~1.1.1",
+    "fullcalendar": "^3.0.0",
+    "fullcalendar-scheduler": "^1.4.0",
+    "angular-ui-calendar": "latest",
+    "angular-strap": "latest",
+    "angular-filepicker": "^1.1.4",
+    "ng-file-upload": "^12.2.13"
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "fullcalendar": ">=3.0.0"
+  }
+}

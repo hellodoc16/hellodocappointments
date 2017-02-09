@@ -1,0 +1,39 @@
+
+<md-dialog ng-cloak>
+    <form name="slotBlockForm">
+        <div class="modal-header">
+            <h2 style="text-align: center">Appointment Block Slot</h2>
+        </div>
+
+        <div class="modal-body">
+            <label style="color: #248dc9">Name: {{ personal.fName + ' ' + personal.lName}} </label>
+            <table class="table table-responsive"> 
+                <thead>
+                    <tr>
+                        <th> Start Date </th>
+                        <th> End Date </th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div flex-gt-xs>
+                                <md-datepicker ng-model="startDate" md-placeholder="Enter startdate" md-min-date="minDate" md-max-date="maxDate" required></md-datepicker>
+                            </div>
+                        </td>
+                        <td>
+                            <div flex-gt-xs>
+                                <md-datepicker ng-model="endDate" md-placeholder="Enter enddate" md-min-date="minDate" md-max-date="maxDate" required></md-datepicker>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <md-button class="md-primary md-raised" ng-click="blockCalendar(personal)" ng-disabled="slotBlockForm.$invalid || slotBlockForm.$pending"> BlockCalendar </md-button>
+            <md-button class="md-primary md-raised" ng-click="cancel('okay')"> Cancel </md-button>
+        </div>
+       
+    </form>
+</md-dialog>
