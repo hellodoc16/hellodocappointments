@@ -1476,12 +1476,12 @@ personalsApp.controller('ApptTypeController', ['$scope', 'ApptTypes',
 var personalsApp = angular.module('personals');
 
 personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'Notify', '$timeout', '$window', 'Authentication', 'FileUploader',
-    function($scope, Personals, Notify, $timeout, $window, Authentication, FileUploader) {
+    function ($scope, Personals, Notify, $timeout, $window, Authentication, FileUploader) {
 
         var personal = [];
 
         // Create new Personal
-        this.CreatePrsnl = function() {
+        this.CreatePrsnl = function () {
 
             // Create new Personal object
             personal = new Personals({
@@ -1497,6 +1497,29 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
                 treatments: this.selectedTreatments,
                 slots: this.slots,
                 profileImageURL: this.profileImageURL
+            });
+
+            // Redirect after save
+            personal.$save(function (response) {
+
+                // Clear form fields
+                $scope.fName = '';
+                $scope.lName = '';
+                $scope.emailId = '';
+                $scope.contact = '';
+                $scope.isConsultant = '';
+                $scope.speciality = '';
+                $scope.qualification = '';
+                $scope.experience = '';
+                $scope.rating = null;
+                $scope.selectedTreatments = null;
+                $scope.slots = null;
+                $scope.picture = null;
+                $scope.file = null;
+                Notify.sendMsg('NewPersonal', { 'id': response._id });
+
+            }, function (errorResponse) {
+                $scope.error = errorResponse.data.message;
             });
 
             // Clear messages
@@ -1516,20 +1539,20 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
         // Set file uploader image filter
         $scope.uploader.filters.push({
             name: 'imageFilter',
-            fn: function(item, options) {
+            fn: function (item, options) {
                 var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
                 return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
             }
         });
 
         // Called after the user selected a new picture file
-        $scope.uploader.onAfterAddingFile = function(fileItem) {
+        $scope.uploader.onAfterAddingFile = function (fileItem) {
             if ($window.FileReader) {
                 var fileReader = new FileReader();
                 fileReader.readAsDataURL(fileItem._file);
 
-                fileReader.onload = function(fileReaderEvent) {
-                    $timeout(function() {
+                fileReader.onload = function (fileReaderEvent) {
+                    $timeout(function () {
                         $scope.imageURL = fileReaderEvent.target.result;
                     }, 0);
                 };
@@ -1537,31 +1560,19 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
         };
 
         // Called after the user has successfully uploaded a new picture
-        $scope.uploader.onSuccessItem = function(fileItem, response, status, headers) {
+        $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
             // Show success message
             $scope.success = true;
 
             // Populate user object
             personal.profileImageURL = response.profileImageURL;
 
-            // Redirect after save
-            personal.$save(function(response) {
-
-                // Clear form fields
-                personal = null;
-                
-                Notify.sendMsg('NewPersonal', { 'id': response._id });
-
-            }, function(errorResponse) {
-                $scope.error = errorResponse.data.message;
-            });
-
             // Clear upload buttons
             $scope.cancelUpload();
         };
 
         // Called after the user has failed to uploaded a new picture
-        $scope.uploader.onErrorItem = function(fileItem, response, status, headers) {
+        $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
             // Clear upload buttons
             $scope.cancelUpload();
 
@@ -1570,7 +1581,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
         };
 
         // Cancel the upload process
-        $scope.cancelUpload = function() {
+        $scope.cancelUpload = function () {
             $scope.uploader.clearQueue();
             $scope.profileImageURL;
         };
@@ -1680,10 +1691,10 @@ personalsApp.controller('PersonalsUpdateController', ['$scope', '$timeout', '$wi
 
 var personalsApp = angular.module('personals');
 
-personalsApp.directive('onErrorSrc', function() {
+personalsApp.directive('onErrorSrc', function () {
     return {
-        link: function(scope, element, attrs) {
-            element.bind('error', function() {
+        link: function (scope, element, attrs) {
+            element.bind('error', function () {
                 if (attrs.src !== attrs.onErrorSrc) {
                     attrs.$set('src', attrs.onErrorSrc);
                 }
@@ -1693,7 +1704,7 @@ personalsApp.directive('onErrorSrc', function() {
 });
 
 personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Personals', '$uibModal', '$log', '$q', 'slotService', '$mdDialog', '$mdMedia', '$googleCalendar', '$mdToast',
-    function($scope, $stateParams, Personals, $uibModal, $log, $q, slotService, $mdDialog, $mdMedia, $googleCalendar, $mdToast) {
+    function ($scope, $stateParams, Personals, $uibModal, $log, $q, slotService, $mdDialog, $mdMedia, $googleCalendar, $mdToast) {
 
         // Find a list of Personals
         this.personals = Personals.query();
@@ -1702,19 +1713,19 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
 
         // Open a modal window to create a single personal record
 
-        this.modelCreate = function(size) {
+        this.modelCreate = function (size) {
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'modules/personals/views/create-personal.client.view.html',
 
-                controller: function($scope, $uibModalInstance) {
+                controller: function ($scope, $uibModalInstance) {
 
-                    $scope.ok = function() {
+                    $scope.ok = function () {
                         $uibModalInstance.close($scope.personal);
                     };
 
-                    $scope.cancel = function() {
+                    $scope.cancel = function () {
                         $uibModalInstance.dismiss('cancel');
                     };
 
@@ -1722,15 +1733,15 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                 size: size
             });
 
-            modalInstance.result.then(function(selectedItem)
-            { $scope.selected = selectedItem; }, function() {
+            modalInstance.result.then(function (selectedItem)
+            { $scope.selected = selectedItem; }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
 
         };
 
         // Open a modal window to update a single personal record
-        this.modelUpdate = function(size, selectedPersonal) {
+        this.modelUpdate = function (size, selectedPersonal) {
 
             var elements = [];
             for (var index = 0; index < selectedPersonal.treatments.length; index++) {
@@ -1752,30 +1763,30 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'modules/personals/views/edit-personal.client.view.html',
-                controller: function($scope, $uibModalInstance, selectedPersonal) {
+                controller: function ($scope, $uibModalInstance, selectedPersonal) {
 
                     $scope.personal = selectedPersonal;
 
-                    $scope.ok = function() {
+                    $scope.ok = function () {
                         $uibModalInstance.close($scope.personal);
                     };
 
-                    $scope.cancel = function() {
+                    $scope.cancel = function () {
                         $uibModalInstance.dismiss('cancel');
                     };
 
                 },
                 size: size,
                 resolve: {
-                    selectedPersonal: function() {
+                    selectedPersonal: function () {
                         return selectedPersonal;
                     }
                 }
             });
 
-            modalInstance.result.then(function(selectedItem) {
+            modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
-            }, function() {
+            }, function () {
 
             });
 
@@ -1783,7 +1794,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
         };
 
         // Open a modal window to update a single personal record
-        this.modelSchedule = function(size, selectedPersonal) {
+        this.modelSchedule = function (size, selectedPersonal) {
 
             var modalInstance = $uibModal.open({
 
@@ -1791,18 +1802,18 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
 
                 templateUrl: 'modules/personals/views/list-apptslots.client.view.html',
 
-                controller: function($scope, $uibModalInstance, selectedPersonal, slotService) {
+                controller: function ($scope, $uibModalInstance, selectedPersonal, slotService) {
 
                     $scope.personal = selectedPersonal;
                     slotService.slotList = selectedPersonal.slots;
 
                     //console.log($scope.slotList);
 
-                    $scope.ok = function() {
+                    $scope.ok = function () {
                         $uibModalInstance.close($scope.personal);
                     };
 
-                    $scope.cancel = function() {
+                    $scope.cancel = function () {
                         $uibModalInstance.dismiss('cancel');
                     };
 
@@ -1811,21 +1822,21 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                 size: size,
 
                 resolve: {
-                    selectedPersonal: function() {
+                    selectedPersonal: function () {
                         return selectedPersonal;
                     }
                 }
             });
 
-            modalInstance.result.then(function(selectedItem) {
+            modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
-            }, function() {
+            }, function () {
 
             });
         };
 
         // Remove existing Personal
-        this.remove = function(personal) {
+        this.remove = function (personal) {
 
             if (confirm('Are you sure you want to delete this user?')) {
                 if (personal) {
@@ -1839,14 +1850,14 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                     }
 
                 } else {
-                    this.personal.$remove(function() { });
+                    this.personal.$remove(function () { });
                 }
             }
         };
 
         // Open a modal window to block slot a single personal record
 
-        this.modelBlock = function(selectedPersonal) {
+        this.modelBlock = function (selectedPersonal) {
 
             function DialogController($scope, $mdDialog, personal, $googleCalendar, $mdToast) {
 
@@ -1859,15 +1870,15 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                     $scope.myDate.getMonth(),
                     $scope.myDate.getDate());
 
-                $scope.hide = function() {
+                $scope.hide = function () {
                     $mdDialog.hide();
                 };
 
-                $scope.cancel = function() {
+                $scope.cancel = function () {
                     $mdDialog.cancel();
                 };
 
-                $scope.blockCalendar = function(personal) {
+                $scope.blockCalendar = function (personal) {
 
                     var startDate = new Date($scope.startDate);
                     startDate.setHours(0, 0, 0, 0);
@@ -1876,7 +1887,7 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                     endDate.setHours(23, 59, 59, 999);
 
                     $googleCalendar.addEvent(startDate, endDate, personal, null)
-                        .then(function(result) {
+                        .then(function (result) {
 
                             $mdToast.show(
                                 $mdToast.simple()
@@ -1890,15 +1901,15 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                             // $scope.showSuccess();
 
 
-                        }, function(result) {
-
+                        }, function (result) {
+                            
                             $mdToast.show(
                                 $mdToast.simple()
                                     .textContent('Unable to block the Appointment Slot!')
                                     .position('top right')
                                     .hideDelay(3000)
                             );
-
+                            
                             console.log('Failed Event Result:', result);
                             // $scope.showFailed();
                         });
@@ -1923,9 +1934,9 @@ personalsApp.controller('PersonalsController', ['$scope', '$stateParams', 'Perso
                 }
             });
 
-            $scope.$watch(function() {
+            $scope.$watch(function () {
                 return $mdMedia('xs') || $mdMedia('sm');
-            }, function(wantsFullScreen) {
+            }, function (wantsFullScreen) {
                 $scope.customFullscreen = (wantsFullScreen === true);
             });
         };
