@@ -6,8 +6,8 @@
   "author": "Bhuvan",
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.28",
-    "npm": ">=1.4.28"
+    "node": ">=5.0.0",
+    "npm": ">=4.1.2"
   },
   "scripts": {
     "start": "grunt",
