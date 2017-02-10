@@ -28,9 +28,9 @@
     "angular-ui-calendar": "latest",
     "angular-strap": "latest",
     "ng-file-upload": "^12.2.13"
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "fullcalendar": ">=3.0.0"
   }
-  // "resolutions": {
-  //   "angular": "1.5.8",
-  //   "fullcalendar": ">=3.0.0"
-  // }
 }
