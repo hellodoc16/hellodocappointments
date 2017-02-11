@@ -5,57 +5,56 @@
 
     <div class="container" ng-controller="HomeController as ctrl" layout="column" ng-cloak>
         <div class="body-main">
-            <img class="hellodoc-logo" itemprop="logo" src="modules/core/img/brand/hellodoc_logo.png" alt="Confident Dental Care"
-                title="Hello Doc Care">
+            <img class="hellodoc-logo" itemprop="logo" src="modules/core/img/brand/hellodoc_logo.png" alt="Confident Dental Care" title="Hello Doc Care">
         </div>
         <form ng-submit="$event.preventDefault()" name="searchForm">
             <div layout-gt-sm="row" class="panel-heading">
                 <h4 class="book-text" style="margin-top:20px"> Book an appointment </h4>
-            </div>
-            <div layout-gt-sm="row" class="panel-body panel-search">
-                <div class="input-search" flex>
-                    <md-autocomplete md-min-length="0" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedAppt"
-                        md-selected-item-change="ctrl.selectedApptChange(item)" md-search-text="ctrl.searchAppt" md-items="item in ctrl.queryApptSearch(ctrl.searchAppt)"
-                        md-item-text="item.description" placeholder="Search treatment">
-                        <md-item-template>
-                            <span md-highlight-text="ctrl.searchAppt">{{item.description}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            <div class="patientcolor">
-                                No Treatment matching "{{ctrl.searchAppt}}" were found.
-                            </div>
-                        </md-not-found>
-                    </md-autocomplete>
-                    <p style="text-align: left; margin-left: 3%;">{{ctrl.selectedAppt.longDescription}}</p>
+</div>
+<div layout-gt-sm="row" class="panel-body panel-search">
+    <div class="input-search" flex>
+        <md-autocomplete md-min-length="0" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedAppt"
+            md-selected-item-change="ctrl.selectedApptChange(item)" md-search-text="ctrl.searchAppt" md-items="item in ctrl.queryApptSearch(ctrl.searchAppt)"
+            md-item-text="item.description" placeholder="Search treatment">
+            <md-item-template>
+                <span md-highlight-text="ctrl.searchAppt">{{item.description}}</span>
+            </md-item-template>
+            <md-not-found>
+                <div class="patientcolor">
+                    No Treatment matching "{{ctrl.searchAppt}}" were found.
                 </div>
-                <div class="input-search" flex>
-                    <md-autocomplete ng-disabled="ctrl.isDisabled" md-min-length="0" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedPrsnl"
-                        md-selected-item-change="ctrl.selectedPrsnlChange(prsnl)" md-search-text="ctrl.searchPrsnl" md-items="prsnl in ctrl.queryPrsnlSearch(ctrl.searchPrsnl)"
-                        md-item-text="prsnl.fName  + ' ' + prsnl.lName" placeholder="Search dentist">
-                        <md-item-template>
-                            <img class="img" ng-src="{{prsnl.profileImageURL}}" ng-if="prsnl.profileImageURL"style="width:40px;height:35px;">
-                            <img class="img" ng-src="modules/personals/img/buttons/default.png" ng-if="!prsnl.profileImageURL"style="width:40px;height:35px;">
-                            <span md-highlight-text="ctrl.searchPrsnl"> {{ prsnl.fName + ' ' + prsnl.lName + ' , ' +prsnl.qualification + ' , ' +prsnl.speciality}}</span>
-                        </md-item-template>
-                        <md-not-found>
-                            <div class="patientcolor">
-                                No Doctors matching "{{ctrl.searchPrsnl}}" were found.
-                            </div>
-                        </md-not-found>
-                    </md-autocomplete>
-                </div>
+            </md-not-found>
+        </md-autocomplete>
+        <p style="text-align: left; margin-left: 3%;">{{ctrl.selectedAppt.longDescription}}</p>
+</div>
+<div class="input-search" flex>
+    <md-autocomplete ng-disabled="ctrl.isDisabled" md-min-length="0" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedPrsnl"
+        md-selected-item-change="ctrl.selectedPrsnlChange(prsnl)" md-search-text="ctrl.searchPrsnl" md-items="prsnl in ctrl.queryPrsnlSearch(ctrl.searchPrsnl)"
+        md-item-text="prsnl.fName  + ' ' + prsnl.lName" placeholder="Search dentist">
+        <md-item-template>
+            <img class="img" ng-src="{{prsnl.profileImageURL}}" ng-if="prsnl.profileImageURL" style="width:40px;height:35px;">
+            <img class="img" ng-src="modules/personals/img/buttons/default.png" ng-if="!prsnl.profileImageURL" style="width:40px;height:35px;">
+            <span md-highlight-text="ctrl.searchPrsnl"> {{ prsnl.fName + ' ' + prsnl.lName + ' , ' +prsnl.qualification + ' , ' +prsnl.speciality}}</span>
+        </md-item-template>
+        <md-not-found>
+            <div class="patientcolor">
+                No Doctors matching "{{ctrl.searchPrsnl}}" were found.
             </div>
-        </form>
+        </md-not-found>
+    </md-autocomplete>
+</div>
+</div>
+</form>
 
-        <div class="book-text">
-            <p class="search-keyword"> You can search treatments and doctors with required keywords </p>
-            <md-button class="md-raised md-primary book" aria-label="book" ng-click="nextPage()">
-                CONFIRM <i class="glyphicon glyphicon-arrow-right"></i></md-button>
-        </div>
+<div class="book-text">
+    <p class="search-keyword"> You can search treatments and doctors with required keywords </p>
+    <md-button class="md-raised md-primary book" aria-label="book" ng-click="nextPage()">
+        CONFIRM <i class="glyphicon glyphicon-arrow-right"></i></md-button>
+</div>
 
-    </div>
+</div>
 
-    <div data-ng-include="'/modules/core/views/footer.client.view.html'" ></div>
+<div data-ng-include="'/modules/core/views/footer.client.view.html'"></div>
 
 </body>
 
