@@ -76,7 +76,8 @@
     "underscore": "*",
     "validator": "*",
     "xmlhttprequest": "*",
-    "q": "*"
+    "q": "*",
+    "oauth": "*"
   },
   "devDependencies": {
     "grunt": "*",
