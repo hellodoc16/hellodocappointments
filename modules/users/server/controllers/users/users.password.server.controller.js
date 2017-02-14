@@ -8,11 +8,11 @@ var path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  nodemailer = require('nodemailer'),
+  // nodemailer = require('nodemailer'),
   async = require('async'),
   crypto = require('crypto');
 
-var smtpTransport = nodemailer.createTransport(config.mailer.options);
+// var smtpTransport = nodemailer.createTransport(config.mailer.options);
 
 /**
  * Forgot for reset password (forgot POST)
@@ -72,19 +72,18 @@ exports.forgot = function (req, res, next) {
         subject: 'Password Reset',
         html: emailHTML
       };
-      smtpTransport.sendMail(mailOptions, function (err) {
-        if (!err) {
-          res.send({
-            message: 'An email has been sent to the provided email with further instructions.'
-          });
-        } else {
-          return res.status(400).send({
-            message: 'Failure sending email'
-          });
-        }
-
+      // smtpTransport.sendMail(mailOptions, function (err) {
+      //   if (!err) {
+      //     res.send({
+      //       message: 'An email has been sent to the provided email with further instructions.'
+      //     });
+      //   } else {
+      //     return res.status(400).send({
+      //       message: 'Failure sending email'
+      //     });
+      //   }
         done(err);
-      });
+      // });
     }
   ], function (err) {
     if (err) {
@@ -181,9 +180,9 @@ exports.reset = function (req, res, next) {
         html: emailHTML
       };
 
-      smtpTransport.sendMail(mailOptions, function (err) {
-        done(err, 'done');
-      });
+      // smtpTransport.sendMail(mailOptions, function (err) {
+         done(err, 'done');
+      // });
     }
   ], function (err) {
     if (err) {
