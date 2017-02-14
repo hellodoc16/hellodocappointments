@@ -82,7 +82,6 @@ exports.forgot = function (req, res, next) {
       //       message: 'Failure sending email'
       //     });
       //   }
-
         done(err);
       // });
     }
