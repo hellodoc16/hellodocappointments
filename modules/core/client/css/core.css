@@ -166,9 +166,6 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #4DB1E2;
 }
-
-
-
 /*md-autocomplete > md-autocomplete-wrap > md-progress-linear { 
     border-color:red!important;
     background: yellow;
