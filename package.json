@@ -75,7 +75,8 @@
     "twilio": "*",
     "underscore": "*",
     "validator": "*",
-    "xmlhttprequest": "*"
+    "xmlhttprequest": "*",
+    "q": "*"
   },
   "devDependencies": {
     "grunt": "*",
