@@ -83,7 +83,7 @@ exports.forgot = function (req, res, next) {
       //     });
       //   }
 
-      //   done(err);
+        done(err);
       // });
     }
   ], function (err) {
@@ -182,7 +182,7 @@ exports.reset = function (req, res, next) {
       };
 
       // smtpTransport.sendMail(mailOptions, function (err) {
-      //   done(err, 'done');
+         done(err, 'done');
       // });
     }
   ], function (err) {
