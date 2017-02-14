@@ -17,7 +17,7 @@ var ApplicationConfiguration = (function () {
     'ngMaterial',
     'angularMoment',
     'angular-input-stars',
-   // 'angularFileUpload'
+    'angularFileUpload'
   ];
 
   // Add a new vertical module
