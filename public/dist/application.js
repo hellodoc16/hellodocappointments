@@ -2289,7 +2289,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
     };
 
     $scope.signin = function () {
-      $http.post('/api/auth/signin', $scope.credentials).response(function (response) {
+      $http.post('/api/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
 
