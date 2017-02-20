@@ -43,7 +43,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
                 $scope.rating = null;
                 $scope.selectedTreatments = null;
                 $scope.slots = null;
-                $scope.picture = null;
+                $scope.profileImageURL = null;
                 $scope.file = null;
                 Notify.sendMsg('NewPersonal', { 'id': response._id });
 
@@ -95,6 +95,18 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
 
             // Populate user object
             personal.profileImageURL = response.profileImageURL;
+
+             // Redirect after save
+            personal.$save(function(response) {
+
+                // Clear form fields
+                personal = null;
+                
+                Notify.sendMsg('NewPersonal', { 'id': response._id });
+
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
 
             // Clear upload buttons
             $scope.cancelUpload();
