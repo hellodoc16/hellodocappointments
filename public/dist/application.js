@@ -1510,10 +1510,10 @@ personalsApp.controller('ApptTypeController', ['$scope', 'ApptTypes',
             apptType.$save(function(response) {
 
                 // Clear form fields
-                $scope.procedure.description = {};
-                $scope.procedure.duration = {};
-                $scope.procedure.price = {};
-                $scope.procedure.longDescription = {};
+                $scope.procedure.description = '';
+                $scope.procedure.duration = '';
+                $scope.procedure.price = '';
+                $scope.procedure.longDescription = '';
 
                 refresh();
 
