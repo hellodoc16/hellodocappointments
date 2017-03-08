@@ -42,7 +42,7 @@ exports.update = function (req, res) {
   apptType.description = req.body.description;
   apptType.duration = req.body.duration;
   apptType.price = req.body.price;
-   apptType.longDescription = req.body.longDescription;
+  apptType.longDescription = req.body.longDescription;
 
   apptType.save(function (err) {
     if (err) {
@@ -60,7 +60,7 @@ exports.update = function (req, res) {
  */
 exports.delete = function (req, res) {
   var apptType = req.apptType;
-  
+
   apptType.remove(function (err) {
     if (err) {
       return res.status(400).send({

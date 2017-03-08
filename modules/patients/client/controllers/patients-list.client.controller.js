@@ -11,7 +11,7 @@ patientApp.controller('PatientsController', ['$scope', 'Patients', function ($sc
         patients = $scope.patients;
         $scope.totalItems = $scope.patients.length;
         $scope.currentPage = 1;
-        $scope.itemsPerPage = 3;
+        $scope.itemsPerPage = 20;
     });    
 
 
