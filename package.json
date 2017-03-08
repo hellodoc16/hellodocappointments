@@ -44,7 +44,7 @@
     "gulp-protractor": "*",
     "helmet": "*",
     "jasmine-core": "*",
-    "karma": "0.13",
+    "karma": "*",
     "karma-coverage": "*",
     "karma-ng-html2js-preprocessor": "*",
     "lodash": "*",
