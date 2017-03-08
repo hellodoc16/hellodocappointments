@@ -107,6 +107,11 @@ ApplicationConfiguration.registerModule('events');
 'use strict';
 
 // Use Applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('patients');
+
+'use strict';
+
+// Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('personals');
 
 'use strict';
@@ -1186,6 +1191,105 @@ angular.module('GoogleCalendarService', [], ["$provide", function ($provide) {
 	}]);
 
 }]);
+'use strict';
+
+// Configuring the Patients module
+angular.module('patients',['multipleSelect','mgcrea.ngStrap', 'ngMaterial', 'ui.bootstrap']).run(['Menus',
+  function (Menus) {
+    // Add the patients dropdown item
+    Menus.addMenuItem('topbar', {
+      title: 'Patient Info',
+      state: 'patients.main',
+    });
+  }
+]);
+
+'use strict';
+
+// Setting up route
+angular.module('patients').config(['$stateProvider',
+  function ($stateProvider) {
+    // Patients state routing
+    $stateProvider
+      .state('patients', {
+        abstract: true,
+        url: '/patients',
+        template: '<ui-view/>',
+        data: {
+          roles: ['user', 'admin']
+        }
+      })
+      .state('patients.main', {
+        url: '/main',
+        templateUrl: 'modules/patients/views/list-patients.client.view.html'
+      })
+    //   .state('events.list', {
+    //     templateUrl: 'modules/events/views/list-events.client.view.html'
+    //   })
+    //   .state('events.calendar', {
+    //     templateUrl: 'modules/events/views/calendar-events.client.view.html'
+    //   })
+    //   .state('events.create', {
+    //     url: '/createappointment',
+    //     templateUrl: 'modules/events/views/create-events.client.view.html'
+    //   });
+  }
+]);
+
+'use strict';
+
+var patientApp = angular.module('patients');
+
+patientApp.controller('PatientsController', ['$scope', 'Patients', function ($scope, Patients) {
+
+    var patients;
+
+    Patients.query(function(result){
+        $scope.patients = result;
+        patients = $scope.patients;
+        $scope.totalItems = $scope.patients.length;
+        $scope.currentPage = 1;
+        $scope.itemsPerPage = 3;
+    });    
+
+
+    $scope.$watch("currentPage", function () {
+        setPagingData($scope.currentPage);
+    });
+
+    function setPagingData(page) {
+
+        if (patients && patients.length > 0) {
+            var pagedData = patients.slice(
+                (page - 1) * $scope.itemsPerPage,
+                page * $scope.itemsPerPage
+            );
+
+            $scope.patients = pagedData;
+        }
+
+    }
+
+}]);
+
+'use strict';
+
+angular.module('patients')
+
+    //Patients service used for communicating with the patients REST endpoints
+
+    .factory('Patients', ['$resource',
+        function($resource) {
+            return $resource('api/patients/:patientId', {
+                patientId: '@_id'
+            }, {
+                    update: {
+                        method: 'PUT'
+                    }
+                });
+        }
+    ]);
+
 'use strict';
 
 // Configuring the Personals module
