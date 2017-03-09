@@ -13,7 +13,7 @@ angular.module('personals',['multipleSelect','mgcrea.ngStrap', 'ngMaterial',]).r
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'personals', {
-      title: 'Dentists',
+      title: 'CareGivers',
       state: 'personals.list'
     });
 

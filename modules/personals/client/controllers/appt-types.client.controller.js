@@ -1,4 +1,4 @@
-'use strict';
+
 
 var personalsApp = angular.module('personals');
 
