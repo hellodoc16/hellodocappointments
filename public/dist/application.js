@@ -1475,7 +1475,7 @@ personalsApp.controller('ApptSlotBlockController', ['$scope', function ($scope) 
     };
 }]);
 
-
+'use strict';
 
 var personalsApp = angular.module('personals');
 
@@ -1488,7 +1488,7 @@ personalsApp.controller('ApptTypeController', ['$scope', 'ApptTypes',
 
         var refresh = function() {
             $scope.procedureList = ApptTypes.query();
-            $scope.procedure = '';
+            $scope.procedure = [];
             $scope.disabled = false;
         };
 
@@ -1567,7 +1567,7 @@ personalsApp.controller('ApptTypeController', ['$scope', 'ApptTypes',
         };
 
         $scope.deselect = function() {
-            $scope.procedure = '';
+            $scope.procedure = [];
             $scope.disabled = false;
         };
 
