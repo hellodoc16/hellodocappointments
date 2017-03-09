@@ -1726,6 +1726,13 @@ personalsApp.controller('PersonalsUpdateController', ['$scope', '$timeout', '$wi
 
             personal = updtpersonal;
 
+             personal.$update(function() {
+            }, function(errorResponse) {
+
+                $scope.error = errorResponse.data.message;
+                console.log(errorResponse.data.message);
+            });
+
             // Clear messages
             $scope.success = $scope.error = null;
 
