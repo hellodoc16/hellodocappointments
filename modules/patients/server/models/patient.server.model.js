@@ -40,7 +40,7 @@ var PatientSchema = new Schema({
         trim: true
     },
     patientSelectedMedicalCondition: {
-        type: Array
+        type: String
     }
 });
 

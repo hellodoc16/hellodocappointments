@@ -5,7 +5,7 @@ angular.module('patients',['multipleSelect','mgcrea.ngStrap', 'ngMaterial', 'ui.
   function (Menus) {
     // Add the patients dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Patient Info',
+      title: 'Patient Information',
       state: 'patients.main',
     });
   }

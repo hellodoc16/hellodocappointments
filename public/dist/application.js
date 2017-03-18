@@ -1198,7 +1198,7 @@ angular.module('patients',['multipleSelect','mgcrea.ngStrap', 'ngMaterial', 'ui.
   function (Menus) {
     // Add the patients dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Patient Info',
+      title: 'Patient Information',
       state: 'patients.main',
     });
   }
@@ -1594,6 +1594,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
                 emailId: this.emailId,
                 contact: this.contact,
                 isConsultant: this.isConsultant,
+                regNumber: this.regNumber,
                 speciality: this.speciality,
                 qualification: this.qualification,
                 experience: this.experience,
@@ -1612,6 +1613,7 @@ personalsApp.controller('PersonalsCreateController', ['$scope', 'Personals', 'No
                 $scope.emailId = '';
                 $scope.contact = '';
                 $scope.isConsultant = '';
+                $scope.regNumber = '';
                 $scope.speciality = '';
                 $scope.qualification = '';
                 $scope.experience = '';

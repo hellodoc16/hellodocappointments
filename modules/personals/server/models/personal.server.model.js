@@ -35,6 +35,11 @@ var PersonalSchema = new Schema({
     isConsultant: {
         type: Boolean
     },
+     regNumber: {
+        type: String,
+        default: '',
+        trim: true
+    },
     speciality: {
         type: String,
         default: '',

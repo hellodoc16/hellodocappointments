@@ -46,6 +46,7 @@ exports.update = function(req, res) {
     personal.lName = req.body.lName;
     personal.contact = req.body.contact;
     personal.emailId = req.body.emailId;
+    personal.regNumber = req.body.regNumber;
     personal.speciality = req.body.speciality;
     personal.isConsultant = req.body.isConsultant;
     personal.qualification = req.body.qualification;
