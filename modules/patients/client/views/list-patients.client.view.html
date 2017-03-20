@@ -16,7 +16,7 @@
         </thead>
 
         <tbody>
-            <tr ng-repeat="patient in patients | filter: searchText">
+            <tr ng-repeat="patient in patients | orderBy: 'patientName' | filter: searchText">
                 <div class="col-sm-4">
                 <input type="text" class="form-control col-sm-2" placeholder="Search by patient name or contact..." ng-model="searchText">
                 </div>

@@ -1,5 +1,5 @@
 <div class="list-group">
-    <div class="col-sm-6 col-md-4 extra-padding" data-ng-repeat="personal in personalsCtrl.personals | filter:searchText">
+    <div class="col-sm-6 col-md-4 extra-padding" data-ng-repeat="personal in personalsCtrl.personals | orderBy: 'fName' | filter:searchText">
         <a class="list-group-item">
 
             <h4 class="prsnl-cust-list text-center">
