@@ -331,7 +331,6 @@ exports.create = function (req, res, next) {
 
         }
 
-
         var calendar = new gcal.GoogleCalendar(profile.providerData.accessToken);
 
         calendar.events.insert(profile.email, eventBody, function (err, response) {
@@ -351,7 +350,6 @@ exports.create = function (req, res, next) {
 
         });
     });
-
 
 };
 
