@@ -36,7 +36,7 @@
                         <button class="btn btn-info" ng-click="deselect()"><i class="glyphicon glyphicon-refresh"></i></button>
                     </td>
                 </tr>
-                <tr data-ng-repeat="procedure in procedureList">
+                <tr data-ng-repeat="procedure in procedureList | orderBy: 'description'">
                     <td>{{procedure.description}}</td>
                     <td>{{procedure.duration}}</td>
                     <td>{{procedure.price}}</td>
