@@ -30,7 +30,7 @@
 <div class="input-search" flex>
     <md-autocomplete ng-disabled="ctrl.isDisabled" md-min-length="0" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedPrsnl"
         md-selected-item-change="ctrl.selectedPrsnlChange(prsnl)" md-search-text="ctrl.searchPrsnl" md-items="prsnl in ctrl.queryPrsnlSearch(ctrl.searchPrsnl)"
-        md-item-text="prsnl.fName  + ' ' + prsnl.lName" placeholder="Search dentist">
+        md-item-text="prsnl.fName  + ' ' + prsnl.lName" placeholder="Search CareGivers">
         <md-item-template>
             <img class="img" ng-src="{{prsnl.profileImageURL}}" ng-if="prsnl.profileImageURL" style="width:40px;height:35px;">
             <img class="img" ng-src="modules/personals/img/buttons/default.png" ng-if="!prsnl.profileImageURL" style="width:40px;height:35px;">
