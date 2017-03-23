@@ -35,7 +35,7 @@
 /* Footer Center */
 
 .footer-distributed .footer-center{
-	width: 30%;
+	width: 50%;
     float: center;
     margin-top: 5px;
 
@@ -48,6 +48,9 @@
     font-weight: normal;
 	text-decoration: none;
     margin: 0;
+}
+.powerbyrtwo{
+	padding-left: 80px
 }
 
 
@@ -124,5 +127,24 @@
 	footer, .push {
 		height: 90px !important; /* '.push' must be the same height as 'footer' */
 	}   
+
+	.powerbyrtwo{
+		padding-left: 0px
+	}
  
 	} 
+
+  /* power by rtwo  */
+  @media only screen and (max-width: 360px){
+	.footer-distributed .footer-center {  
+		   font-size: 13px;
+	}
+
+	}
+
+  @media only screen and (max-width: 320px){		 
+	.footer-distributed .footer-center {
+             font-size: 12px;
+	}
+		
+	}

@@ -15,7 +15,7 @@
     <div class="input-search" flex>
         <md-autocomplete md-min-length="0" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedAppt"
             md-selected-item-change="ctrl.selectedApptChange(item)" md-search-text="ctrl.searchAppt" md-items="item in ctrl.queryApptSearch(ctrl.searchAppt)"
-            md-item-text="item.description" placeholder="Search treatment">
+            md-item-text="item.description" placeholder="Search Interactions">
             <md-item-template>
                 <span md-highlight-text="ctrl.searchAppt">{{item.description}}</span>
             </md-item-template>
