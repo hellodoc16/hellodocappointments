@@ -2,7 +2,7 @@
 
 module.exports = {
     app: {
-        title: 'Scheduling Application',
+        title: 'HelloDoc Online',
         description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
         keywords: 'MongoDB, Express, AngularJS, Node.js',
         googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'

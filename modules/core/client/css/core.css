@@ -170,3 +170,18 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {
     background-color: #4DB1E2;
 }
+
+/* only screen size 768px */
+@media only screen and (min-width: 768px) and (orientation: portrait){
+md-toolbar {
+    min-height: 130px;
+}
+
+}
+
+@media only screen and (min-width: 1024px) and (orientation: portrait){
+md-toolbar {
+    font-size: 24px
+}
+
+}
