@@ -85,7 +85,7 @@ angular.module('core').controller('HomeController',
     function selectedApptChange(item) {
 
       if(item)
-        prsnl.personals = queryPrsnlSearchBy (item.description);
+        prsnl.personals = queryPrsnlSearchByWOTimeOut (item.description);
       else
         prsnl.personals = Personals.query();
         
@@ -100,6 +100,11 @@ angular.module('core').controller('HomeController',
       var deferred = $q.defer();
       $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
       return deferred.promise;
+    }
+
+    function queryPrsnlSearchByWOTimeOut (query) {
+      var results = query ? prsnl.personalsAll.filter( createFilterByTreatment(query) ) : prsnl.personalsAll;
+      return results;
     }
 
     /**
