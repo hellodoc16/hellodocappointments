@@ -8,12 +8,12 @@ angular.module('users').controller('ChangePasswordController', ['$scope', '$http
     $scope.changeUserPassword = function () {
       $scope.success = $scope.error = null;
 
-      $http.post('/api/users/password', $scope.passwordDetails).success(function (status) {
+      $http.post('/api/users/password', $scope.passwordDetails).success(function (response) {
         // If successful show success message and clear form
         $scope.success = true;
         $scope.passwordDetails = null;
-      }).error(function (status) {
-        $scope.error = status.message;
+      }).error(function (response) {
+        $scope.error = response.message;
       });
     };
   }
