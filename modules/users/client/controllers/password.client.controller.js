@@ -34,7 +34,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
         $scope.passwordDetails = null;
 
         // Attach user profile
-        Authentication.user = response.data;
+        Authentication.user = response;
 
         // And redirect to the index page
         $location.path('/password/reset/success');
